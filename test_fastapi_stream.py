@@ -6,7 +6,7 @@ with httpx.stream(
     "POST",
     "http://127.0.0.1:8000/chat",
     json={
-        "message": "Explícame brevemente qué es Python."
+        "message": "Explícame detalladamente qué es Python, para qué sirve y cuáles son sus principales características."
     },
     timeout=120.0
 ) as respuesta:

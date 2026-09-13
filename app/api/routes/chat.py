@@ -33,7 +33,16 @@ def chat(request: ChatRequest):
                             "content": request.message
                         }
                     ],
-                    "stream": True
+                    "stream": True,
+                    "options":{
+                        "num_predict": 200, # Número máximo de tokens a generar.
+                        "temperature": 0.2, # Controla la aleatoriedad de la respuesta generada. Un valor más bajo produce respuestas más deterministas.
+                        "top_p": 0.9, # Controla la diversidad de la respuesta generada. Un valor más alto permite una mayor variedad de palabras.
+                        "top_k": 40, # Limita el número de palabras candidatas a considerar en cada paso de generación. Un valor más bajo puede producir respuestas más coherentes pero menos diversas.
+                        "seed": 42,  # Semilla para la generación de números aleatorios, lo que permite reproducir resultados consistentes.
+                        "num_ctx": 4096, # Número máximo de tokens que el modelo puede considerar en su contexto. Un valor más alto permite respuestas más largas y coherentes.
+                        
+                    }
                 },
                 timeout=120.0
             ) as respuesta:
