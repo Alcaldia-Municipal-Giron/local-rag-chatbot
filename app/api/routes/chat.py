@@ -3,28 +3,35 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 import httpx
 import json
+from app.services.conversation_service import (
+    obtener_historial,
+    agregar_mensaje
+)
 
 
 # Define la estructura de los datos que el cliente debe enviar al endpoint de chat.
 class ChatRequest(BaseModel):
+    session_id: str
     message: str
-
 
 # Crea un router para agrupar los endpoints relacionados con el chatbot.
 router = APIRouter()
 
-# Guarda temporalmente la conversación mientras el servidor está ejecutándose.
-historial = []
-
 # Envía el mensaje a Ollama y transmite progresivamente la respuesta de Qwen.
 @router.post("/chat")
 def chat(request: ChatRequest):
-    
+        
     # Guarda la pregunta actual del usuario en el historial de la conversación.
-    historial.append({
-        "role": "user",
-        "content": request.message
-    })
+    agregar_mensaje(
+        request.session_id,
+        {
+            "role": "user",
+            "content": request.message
+        }
+    )
+    
+    # Recupera nuevamente el historial para incluir el mensaje recién guardado.
+    historial = obtener_historial(request.session_id)
     
     def generar_respuesta():
 
@@ -81,8 +88,10 @@ def chat(request: ChatRequest):
                             # Envía el fragmento inmediatamente al cliente para mantener el streaming.
                             yield contenido
                             
-            # Guarda la respuesta completa del asistente en el historial.
-            historial.append({
+            # Guarda la respuesta completa del asistente en la sesión actual.
+            agregar_mensaje(
+                request.session_id,
+                {
                 "role": "assistant",
                 "content": respuesta_completa
             })
