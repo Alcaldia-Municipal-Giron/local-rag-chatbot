@@ -13,11 +13,19 @@ class ChatRequest(BaseModel):
 # Crea un router para agrupar los endpoints relacionados con el chatbot.
 router = APIRouter()
 
+# Guarda temporalmente la conversación mientras el servidor está ejecutándose.
+historial = []
 
 # Envía el mensaje a Ollama y transmite progresivamente la respuesta de Qwen.
 @router.post("/chat")
 def chat(request: ChatRequest):
-
+    
+    # Guarda la pregunta actual del usuario en el historial de la conversación.
+    historial.append({
+        "role": "user",
+        "content": request.message
+    })
+    
     def generar_respuesta():
 
         try:
@@ -29,10 +37,18 @@ def chat(request: ChatRequest):
                     "model": "qwen2.5-coder:3b-instruct",
                     "messages": [
                         {
-                            "role": "user",
-                            "content": request.message
+                            "role": "system",
+                            "content": """Eres un asistente especializado en programación.
+
+                            Responde siempre en español.
+
+                            Explica los conceptos de forma clara, sencilla y ordenada.
+
+                            Cuando sea posible, utiliza ejemplos prácticos para facilitar la comprensión.
+
+                            No inventes información. Si no tienes suficiente información para responder, indícalo claramente."""
                         }
-                    ],
+                    ] + historial,
                     "stream": True,
                     "options":{
                         "num_predict": 200, # Número máximo de tokens a generar.
@@ -46,6 +62,9 @@ def chat(request: ChatRequest):
                 },
                 timeout=120.0
             ) as respuesta:
+                
+                # Acumula todos los fragmentos de la respuesta para guardarlos al finalizar.
+                respuesta_completa = ""
 
                 # Genera cada fragmento de texto a medida que Ollama lo envía.
                 for linea in respuesta.iter_lines():
@@ -56,7 +75,17 @@ def chat(request: ChatRequest):
                         contenido = datos["message"]["content"]
 
                         if contenido:
+                            # Acumula cada fragmento para reconstruir la respuesta completa.
+                            respuesta_completa += contenido
+                            
+                            # Envía el fragmento inmediatamente al cliente para mantener el streaming.
                             yield contenido
+                            
+            # Guarda la respuesta completa del asistente en el historial.
+            historial.append({
+                "role": "assistant",
+                "content": respuesta_completa
+            })
 
         except httpx.RequestError:
             raise HTTPException(
