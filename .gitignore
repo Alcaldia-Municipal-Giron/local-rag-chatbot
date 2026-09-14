@@ -12,3 +12,9 @@ __pycache__/
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+
+# Documentos cargados localmente por los usuarios
+data/documents/
+
+# Metadata generada de los documentos
+data/documents_metadata.json
