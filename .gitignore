@@ -1,20 +1,72 @@
 # Entorno virtual de Python
+
 .venv/
+venv/
+env/
 
 # Caché de Python
+
 __pycache__/
 *.py[cod]
 
 # Variables de entorno
+
 .env
 .env.*
+!.env.example
 
 # Archivos del sistema
+
 .DS_Store
 Thumbs.db
 
+# ==========================================
+# Datos generados localmente
+# ==========================================
+
+data/vector_store/
+data/documents_metadata.json
+
 # Documentos cargados localmente por los usuarios
+
 data/documents/
 
-# Metadata generada de los documentos
-data/documents_metadata.json
+# ==========================================
+# Bases de datos locales
+# ==========================================
+
+*.sqlite3
+*.db
+
+# ==========================================
+# Cachés de modelos de IA
+# ==========================================
+
+hf-cache/
+hf_cache/
+.cache/
+
+# ==========================================
+# Pytest
+# ==========================================
+
+.pytest_cache/
+
+# ==========================================
+# IDE / editores
+# ==========================================
+
+.vscode/
+.idea/
+
+# ==========================================
+# Git
+# ==========================================
+
+.git/
+
+# ==========================================
+# Docker
+# ==========================================
+
+docker-compose.override.yml
