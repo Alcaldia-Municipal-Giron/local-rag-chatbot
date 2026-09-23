@@ -1,0 +1,65 @@
+services:
+
+  # ==========================================
+  # API FastAPI
+  # ==========================================
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: local-rag-fastapi
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+
+    depends_on:
+      - postgres
+
+    networks:
+      - local-rag-network
+
+  # ==========================================
+  # PostgreSQL + pgvector
+  # ==========================================
+
+  postgres:
+    image: pgvector/pgvector:pg17
+
+    container_name: local-rag-postgres
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    volumes:
+      - local-rag-postgres-data:/var/lib/postgresql/data
+
+    networks:
+      - local-rag-network
+
+  # ==========================================
+  # Red interna
+  # ==========================================
+
+networks:
+  local-rag-network:
+    name: local-rag-network
+    external: true
+
+  # ==========================================
+  # Volumen persistente de PostgreSQL
+  # ==========================================
+
+volumes:
+  local-rag-postgres-data:
+    external: true
