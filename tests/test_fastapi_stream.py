@@ -7,7 +7,7 @@ with httpx.stream(
     "http://127.0.0.1:8000/chat",
     json={
         "session_id": "sesion-1",
-        "message": "¿Dónde queda la Alcaldía de Girón en Colombia?"
+        "message": "¿Cómo se registran los artistas?"
     },
     timeout=120.0
 ) as respuesta:

@@ -1,3 +1,12 @@
 {
-    
+    "sesion-1": [
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y tray"
+        }
+    ]
 }
