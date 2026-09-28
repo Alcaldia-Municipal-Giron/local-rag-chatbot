@@ -6,7 +6,7 @@ import json
 
 from app.services.conversation_service import (
     obtener_historial,
-    agregar_mensaje
+    agregar_mensaje,
 )
 
 from app.rag.retriever import recuperar_contexto
@@ -28,33 +28,58 @@ router = APIRouter()
 @router.post("/chat")
 def chat(request: ChatRequest):
 
-    # Guarda la pregunta actual del usuario en el historial de la conversación.
+    # Guarda la pregunta actual del usuario en el historial.
     agregar_mensaje(
         request.session_id,
         {
             "role": "user",
-            "content": request.message
-        }
+            "content": request.message,
+        },
     )
 
-    # Recupera nuevamente el historial para incluir el mensaje recién guardado.
+    # Recupera nuevamente el historial para incluir
+    # el mensaje recién guardado.
     historial = obtener_historial(request.session_id)
 
-    # Recupera los fragmentos más relevantes de los documentos
-    # utilizando la pregunta actual del usuario.
+    # Recupera los fragmentos más relevantes de los documentos.
     resultados = recuperar_contexto(
         request.message,
-        top_k=3
+        top_k=3,
     )
 
-    # Convierte los fragmentos recuperados en un único contexto textual.
+    # Distancia máxima permitida para considerar
+    # que existe suficiente información relevante.
+    MAX_DISTANCE = 0.50
+
+    # Si no hay resultados o el resultado más relevante
+    # está demasiado lejos, no se consulta al LLM.
+    if not resultados or resultados[0]["distance"] > MAX_DISTANCE:
+
+        respuesta = (
+            "No encontré información suficiente en los documentos "
+            "para responder esta pregunta."
+        )
+
+        agregar_mensaje(
+            request.session_id,
+            {
+                "role": "assistant",
+                "content": respuesta,
+            },
+        )
+
+        return respuesta
+
+    # Convierte los fragmentos recuperados
+    # en un único contexto textual.
     contexto = construir_contexto(resultados)
 
     def generar_respuesta():
 
         try:
-            # Mantiene abierta la conexión con Ollama para recibir
-            # la respuesta por fragmentos.
+
+            # Mantiene abierta la conexión con Ollama
+            # para recibir la respuesta progresivamente.
             with httpx.stream(
                 "POST",
                 "http://127.0.0.1:11434/api/chat",
@@ -64,22 +89,57 @@ def chat(request: ChatRequest):
                     "messages": [
                         {
                             "role": "system",
-                            "content": f"""Eres un asistente que responde utilizando los documentos proporcionados.
+                            "content": f"""
+Eres un asistente que responde preguntas utilizando
+exclusivamente la información contenida en los documentos proporcionados.
 
 Responde siempre en español.
 
-Utiliza el contexto proporcionado para responder la pregunta del usuario.
+REGLAS DE EVIDENCIA:
 
-No inventes información que no esté respaldada por el contexto.
+1. Utiliza únicamente la información presente en el CONTEXTO.
 
-Si el contexto no contiene información suficiente para responder,
-indícalo claramente.
+2. No utilices conocimientos generales, conocimientos previos del modelo
+ni información externa a los documentos.
+
+3. No inventes, supongas ni completes información que no aparezca
+en el CONTEXTO.
+
+4. No determines que una pregunta puede responderse únicamente porque
+existan palabras o conceptos relacionados con ella.
+
+5. Para responder una pregunta, el CONTEXTO debe contener información
+suficiente y directamente relacionada con lo que se está preguntando.
+
+6. Si la pregunta solicita un dato específico, como una cantidad,
+límite, fecha, estado, condición o requisito, ese dato debe estar
+explícitamente presente en el CONTEXTO.
+
+7. Si la pregunta solicita un procedimiento, el CONTEXTO debe contener
+los pasos o instrucciones necesarios para explicar dicho procedimiento.
+
+8. Si la pregunta solicita requisitos legales, normativos o jurídicos,
+solo puedes responder si esos requisitos aparecen explícitamente
+en el CONTEXTO. No conviertas datos de un formulario en requisitos legales.
+
+9. Si el CONTEXTO contiene información relacionada pero no suficiente
+para responder exactamente la pregunta, debes indicarlo en lugar
+de intentar completar la respuesta.
+
+10. Si no existe información suficiente en el CONTEXTO, responde exactamente:
+
+"No encontré información suficiente en los documentos para responder
+esta pregunta."
+
+11. Cuando sí exista información suficiente, responde de forma clara,
+directa y basada únicamente en el CONTEXTO.
 
 CONTEXTO:
 {contexto}
-"""
+""",
                         }
-                    ] + historial,
+                    ]
+                    + historial,
 
                     "stream": True,
 
@@ -89,52 +149,53 @@ CONTEXTO:
                         "top_p": 0.9,
                         "top_k": 40,
                         "seed": 42,
-                        "num_ctx": 4096
-                    }
+                        "num_ctx": 4096,
+                    },
                 },
-                timeout=500.0
+                timeout=500.0,
             ) as respuesta:
 
-                # Acumula todos los fragmentos de la respuesta
-                # para guardarlos al finalizar.
+                # Acumula todos los fragmentos para
+                # guardar la respuesta completa al finalizar.
                 respuesta_completa = ""
 
-                # Genera cada fragmento de texto a medida que Ollama lo envía.
+                # Procesa cada fragmento enviado por Ollama.
                 for linea in respuesta.iter_lines():
 
-                    if linea:
-                        datos = json.loads(linea)
+                    if not linea:
+                        continue
 
-                        contenido = datos["message"]["content"]
+                    datos = json.loads(linea)
 
-                        if contenido:
-                            # Acumula cada fragmento para reconstruir
-                            # la respuesta completa.
-                            respuesta_completa += contenido
+                    contenido = datos["message"]["content"]
 
-                            # Envía el fragmento inmediatamente al cliente
-                            # para mantener el streaming.
-                            yield contenido
+                    if contenido:
 
-            # Guarda la respuesta completa del asistente
-            # en la sesión actual.
-            agregar_mensaje(
-                request.session_id,
-                {
-                    "role": "assistant",
-                    "content": respuesta_completa
-                }
-            )
+                        # Acumula el fragmento.
+                        respuesta_completa += contenido
 
-        except httpx.RequestError:
+                        # Envía inmediatamente el fragmento
+                        # al cliente mediante streaming.
+                        yield contenido
+
+                # Guarda la respuesta completa del asistente.
+                agregar_mensaje(
+                    request.session_id,
+                    {
+                        "role": "assistant",
+                        "content": respuesta_completa,
+                    },
+                )
+
+        except httpx.RequestError as e:
+
             raise HTTPException(
                 status_code=503,
-                detail="No se pudo conectar con Ollama."
-            )
+                detail="No se pudo conectar con Ollama.",
+            ) from e
 
-    # Devuelve la respuesta como un flujo de texto
-    # en lugar de esperar la respuesta completa.
+    # Devuelve la respuesta como un flujo de texto.
     return StreamingResponse(
         generar_respuesta(),
-        media_type="text/plain"
+        media_type="text/plain",
     )

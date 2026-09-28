@@ -69,6 +69,90 @@
         {
             "role": "assistant",
             "content": "La capital de Japón es Tokio. Su población es de alrededor de 37 millones de habitantes."
+        },
+        {
+            "role": "user",
+            "content": "¿Cuál es la capital de Japón y cuál es su población?"
+        },
+        {
+            "role": "assistant",
+            "content": "La capital de Japón es Tokio. Su población es de alrededor de 37 millones de habitantes."
+        }
+    ],
+    "sesion-avg_respuesta": [
+        {
+            "role": "user",
+            "content": "¿Cuántas fotografías puede subir un prestador turístico durante el registro?"
+        },
+        {
+            "role": "assistant",
+            "content": "Un prestador turístico puede subir hasta 6 fotografías durante el registro."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registra un nuevo prestador de servicios turísticos?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para registrar un nuevo prestador de servicios turísticos, se debe navegar al Panel de administración y seleccionar la sección Turismo. Luego, se debe hacer clic en \"Nuevo prestador\" para iniciar el registro."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se recupera una contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para recuperar una contraseña, se debe navegar a la pantalla de inicio de sesión y seleccionar la opción \"¿Olvidaste tu contraseña?\". Luego, se debe escribir el correo electrónico asociado a la cuenta y seleccionar \"Enviar código de verificación\". Se recibirá un código de 6 dígitos por correo electrónico, válido por 15 minutos. Se debe escribir el código en el sistema y seleccionar \"Verificar código\". Luego, se debe escribir una nueva contraseña (mínimo 8 caracteres) y confirmarla, y seleccionar \"Guardar nueva contraseña\"."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué requisitos legales necesita un artista para registrarse?"
+        },
+        {
+            "role": "assistant",
+            "content": "No se especifican requisitos legales específicos para registrarse como artista."
+        },
+        {
+            "role": "user",
+            "content": "¿Cuál es la capital de Colombia?"
+        },
+        {
+            "role": "assistant",
+            "content": "La capital de Colombia es Bogotá."
+        }
+    ],
+    "sesion-filtro-determinista-relevancia": [
+        {
+            "role": "user",
+            "content": "¿Cuál es la capital de Colombia?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Cuántas fotografías puede subir un prestador turístico?"
+        },
+        {
+            "role": "assistant",
+            "content": "Un prestador turístico puede subir hasta 6 fotografías para complementar la información del sitio turístico."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué requisitos legales necesita un artista para registrarse?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
         }
     ]
 }
