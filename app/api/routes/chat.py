@@ -84,7 +84,7 @@ CONTEXTO:
                     "stream": True,
 
                     "options": {
-                        "num_predict": 200,
+                        "num_predict": 400,
                         "temperature": 0.2,
                         "top_p": 0.9,
                         "top_k": 40,
@@ -92,7 +92,7 @@ CONTEXTO:
                         "num_ctx": 4096
                     }
                 },
-                timeout=300.0
+                timeout=500.0
             ) as respuesta:
 
                 # Acumula todos los fragmentos de la respuesta

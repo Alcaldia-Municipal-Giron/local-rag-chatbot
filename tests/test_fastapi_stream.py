@@ -6,10 +6,10 @@ with httpx.stream(
     "POST",
     "http://127.0.0.1:8000/chat",
     json={
-        "session_id": "sesion-1",
-        "message": "¿Cómo se registran los artistas?"
+        "session_id": "sesion-prueba-externa",
+        "message": "¿Cuál es la capital de Japón y cuál es su población?"
     },
-    timeout=120.0
+    timeout=500.0
 ) as respuesta:
 
     print("Respuesta de FastAPI:")

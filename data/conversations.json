@@ -7,6 +7,68 @@
         {
             "role": "assistant",
             "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y tray"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y trayectoria y repertorio.\n   - **Info Adicional**: Permite ingresar detalles sobre la situación laboral y de seguridad social, si tiene una empresa registrada en Cámara de Comercio o RUT, y enlaces a sus redes sociales.\n   - **Cuenta de acceso**: Permite crear un usuario y contraseña para iniciar sesión en el sistema.\n\n4. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos.\n\n5. **Estado del registro**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio. Sustituye el formato físico CT-F.03 por un registro digital, lo que agiliza el proceso, organiza la información y facilita su consulta."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y trayectoria y repertorio.\n   - **Info Adicional**: Permite ingresar detalles sobre la situación laboral y de seguridad social, si tiene una empresa registrada en Cámara de Comercio o RUT, y enlaces a sus redes sociales.\n   - **Cuenta de acceso**: Permite crear un usuario y contraseña para iniciar sesión en el sistema.\n\n4. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos.\n\n5. **Estado del registro**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registra un prestador turístico?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para registrar un prestador turístico, sigue estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Datos del lugar**: En este apartado se solicita la información básica del sitio turístico o establecimiento, necesaria para identificarlo y facilitar su contacto. Los campos disponibles son:\n   - Nombre: permite ingresar el nombre del sitio turístico o establecimiento.\n   - Dirección: permite registrar la dirección donde se encuentra ubicado.\n   - Teléfono: permite ingresar el número de contacto.\n   - Correo electrónico: permite registrar la dirección de correo electrónico del establecimiento.\n\n4. **Cuenta de acceso**: En este apartado, el usuario debe configurar los datos necesarios para crear su cuenta de acceso, la cual permitirá ingresar posteriormente al sistema y consultar la información asociada al registro del sitio turístico.\n   - Ingresa el correo electrónico y establece una contraseña. Estos datos serán utilizados posteriormente como credenciales para iniciar sesión en la plataforma.\n   - Asegúrate de recordar el correo electrónico y la contraseña registrados, ya que serán necesarios para acceder nuevamente al sistema.\n\n5. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos.\n\n6. **Estado del registro**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué información se solicita durante el registro?"
+        },
+        {
+            "role": "assistant",
+            "content": "Durante el registro, se solicitan las siguientes informaciones:\n\n1. **Datos personales**: Nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n\n2. **Disciplina**: Selecciona una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y trayectoria y repertorio.\n\n3. **Info Adicional**: Incluye detalles sobre la situación laboral y de seguridad social, si tiene una empresa registrada en Cámara de Comercio o RUT, y enlaces a sus redes sociales.\n\n4. **Cuenta de acceso**: Ingresa el correo electrónico y establece una contraseña. Estos datos serán utilizados posteriormente como credenciales para iniciar sesión en la plataforma.\n\n5. **Fotos del lugar**: Se solicitan hasta 10 fotos adicionales, sin contar la foto principal.\n\n6. **Cuenta de acceso**: Se crea una cuenta de acceso para el usuario y se establece una contraseña.\n\n7. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos."
+        },
+        {
+            "role": "user",
+            "content": "¿Dónde queda la Alcaldía de Girón?"
+        },
+        {
+            "role": "assistant",
+            "content": "La Alcaldía de Girón se encuentra en la ciudad de Girón, Santander, Colombia."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es una cosa que NO aparece en los documentos?"
+        }
+    ],
+    "sesion-prueba-externa": [
+        {
+            "role": "user",
+            "content": "¿Cuál es la capital de Japón y cuál es su población?"
+        },
+        {
+            "role": "assistant",
+            "content": "La capital de Japón es Tokio. Su población es de alrededor de 37 millones de habitantes."
         }
     ]
 }
