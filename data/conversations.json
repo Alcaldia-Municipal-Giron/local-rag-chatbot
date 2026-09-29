@@ -153,6 +153,64 @@
         {
             "role": "assistant",
             "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        }
+    ],
+    "prueba-Docker-encendido": [
+        {
+            "role": "user",
+            "content": "¿Que es Gaia?"
+        },
+        {
+            "role": "assistant",
+            "content": "Gaia es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para crear un Artista, sigue estos pasos:\n\n1. Inicia sesión en el Panel de Administración.\n2. Navega a la sección de Artistas.\n3. Haz clic en \"Nuevo artista\".\n4. Completa el formulario de registro de Artista.\n5. Acepta la autorización para el tratamiento de datos personales.\n6. Completa los campos de Datos personales, Disciplina, Info Adicional y Cuenta de acceso.\n7. Acepta la autorización para el tratamiento de datos personales.\n8. Haz clic en \"Enviar registro\".\n\nEstos pasos te permitirán registrar un nuevo artista en el sistema."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un sitio turístico?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para crear un sitio turístico, sigue estos pasos:\n\n1. Inicia sesión en el Panel de Administración.\n2. Navega a la sección de Turismo.\n3. Haz clic en \"Nuevo sitio turístico\".\n4. Completa el formulario de registro de sitio turístico.\n5. Acepta la autorización para el tratamiento de datos personales.\n6. Completa los campos de Datos del lugar, Fotos del lugar y Cuenta de acceso.\n7. Acepta la autorización para el tratamiento de datos personales.\n8. Haz clic en \"Enviar registro\".\n\nEstos pasos te permitirán registrar un nuevo sitio turístico en el sistema."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se cambia la contraseña?"
         }
     ]
 }

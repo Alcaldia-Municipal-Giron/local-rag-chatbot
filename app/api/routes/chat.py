@@ -3,6 +3,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 import httpx
 import json
+from app.db.database import DatabaseConnectionError
 
 from app.services.conversation_service import (
     obtener_historial,
@@ -42,10 +43,16 @@ def chat(request: ChatRequest):
     historial = obtener_historial(request.session_id)
 
     # Recupera los fragmentos más relevantes de los documentos.
-    resultados = recuperar_contexto(
-        request.message,
-        top_k=3,
-    )
+    try:
+        resultados = recuperar_contexto(
+            request.message,
+            top_k=3,
+        )
+    except DatabaseConnectionError as e:
+        raise HTTPException(
+            status_code=503,
+            detail=str(e),
+        ) from e
 
     # Distancia máxima permitida para considerar
     # que existe suficiente información relevante.
@@ -178,14 +185,17 @@ CONTEXTO:
                         # al cliente mediante streaming.
                         yield contenido
 
-                # Guarda la respuesta completa del asistente.
-                agregar_mensaje(
-                    request.session_id,
-                    {
-                        "role": "assistant",
-                        "content": respuesta_completa,
-                    },
-                )
+                # Guarda la respuesta solamente si Ollama
+                # realmente generó contenido.
+                if respuesta_completa:
+
+                    agregar_mensaje(
+                        request.session_id,
+                        {
+                            "role": "assistant",
+                            "content": respuesta_completa,
+                        },
+                    )
 
         except httpx.RequestError as e:
 
