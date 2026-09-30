@@ -6,7 +6,9 @@ import os
 import tempfile
 from pathlib import Path
 
+
 from app.rag.document_processor import process_document
+
 from app.rag.vector_store import (
     save_document_with_chunks,
     delete_document,
@@ -67,9 +69,11 @@ METADATA_FILE = Path(
 # ---------------------------------------------------------
 
 async def calculate_file_hash(file: UploadFile):
+
     sha256 = hashlib.sha256()
 
     while chunk := await file.read(1024 * 1024):
+
         sha256.update(chunk)
 
     await file.seek(0)
@@ -78,17 +82,74 @@ async def calculate_file_hash(file: UploadFile):
 
 
 # ---------------------------------------------------------
+# Limpia el nombre recibido desde la petición.
+#
+# El nombre del archivo es controlado por el cliente, por
+# lo que no debemos utilizar directamente una ruta enviada
+# por el usuario.
+#
+# Path.name conserva únicamente el nombre final del archivo
+# y elimina los componentes de directorio.
+#
+# Ejemplo:
+#
+# ../../manual.pdf
+#
+# se convierte en:
+#
+# manual.pdf
+# ---------------------------------------------------------
+
+def sanitize_filename(filename: str) -> str:
+
+    safe_filename = Path(filename).name
+
+    if not safe_filename:
+        raise HTTPException(
+            status_code=400,
+            detail="El nombre del archivo no es válido."
+        )
+
+    return safe_filename
+
+
+# ---------------------------------------------------------
+# Verifica que una ruta se encuentre dentro de la carpeta
+# destinada exclusivamente para documentos.
+#
+# Esta es una segunda capa de protección contra Path
+# Traversal.
+# ---------------------------------------------------------
+
+def validate_document_path(file_path: Path):
+
+    documents_directory = DOCUMENTS_DIR.resolve()
+
+    resolved_path = file_path.resolve()
+
+    if documents_directory not in resolved_path.parents:
+
+        raise HTTPException(
+            status_code=400,
+            detail="La ruta del archivo no es válida."
+        )
+
+
+# ---------------------------------------------------------
 # Lee la metadata de los documentos.
 # ---------------------------------------------------------
 
 def load_metadata():
+
     if not METADATA_FILE.exists():
+
         return {}
 
     with METADATA_FILE.open(
         "r",
         encoding="utf-8"
     ) as file:
+
         return json.load(file)
 
 
@@ -96,11 +157,13 @@ def load_metadata():
 # Guarda la metadata de forma atómica.
 #
 # Primero se crea un archivo temporal.
+#
 # Cuando termina correctamente, se reemplaza
 # el archivo original.
 # ---------------------------------------------------------
 
 def save_metadata(metadata):
+
     metadata_directory = METADATA_FILE.parent
 
     with tempfile.NamedTemporaryFile(
@@ -129,12 +192,14 @@ def save_metadata(metadata):
         )
 
     try:
+
         os.replace(
             temporary_path,
             METADATA_FILE
         )
 
     except Exception:
+
         temporary_path.unlink(
             missing_ok=True
         )
@@ -147,14 +212,17 @@ def save_metadata(metadata):
 # ---------------------------------------------------------
 
 def initialize_metadata():
+
     metadata = load_metadata()
 
     for file_path in DOCUMENTS_DIR.iterdir():
 
         if not file_path.is_file():
+
             continue
 
         if file_path.name in metadata:
+
             continue
 
         sha256 = hashlib.sha256()
@@ -162,11 +230,15 @@ def initialize_metadata():
         with file_path.open("rb") as file:
 
             while chunk := file.read(1024 * 1024):
+
                 sha256.update(chunk)
 
         metadata[file_path.name] = {
+
             "sha256": sha256.hexdigest(),
+
             "size_bytes": file_path.stat().st_size,
+
             "content_type": None
         }
 
@@ -180,14 +252,28 @@ def initialize_metadata():
 # ---------------------------------------------------------
 
 def get_available_filename(filename):
+
+    # -----------------------------------------------------
+    # El nombre recibido debe haber sido sanitizado antes
+    # de llegar a esta función.
+    # -----------------------------------------------------
+
     original_path = DOCUMENTS_DIR / filename
 
+    # -----------------------------------------------------
+    # Verificación adicional de seguridad.
+    # -----------------------------------------------------
+
+    validate_document_path(original_path)
+
     if not original_path.exists():
+
         return filename
 
     path = Path(filename)
 
     name = path.stem
+
     extension = path.suffix
 
     counter = 1
@@ -200,7 +286,14 @@ def get_available_filename(filename):
 
         new_path = DOCUMENTS_DIR / new_filename
 
+        # -------------------------------------------------
+        # Verificamos también cada nombre alternativo.
+        # -------------------------------------------------
+
+        validate_document_path(new_path)
+
         if not new_path.exists():
+
             return new_filename
 
         counter += 1
@@ -253,21 +346,40 @@ async def upload_document(
 
 
     # -----------------------------------------------------
-    # 3. Determinar el nombre y ruta del archivo.
+    # 3. Sanitizar el nombre recibido.
+    #
+    # El cliente puede proporcionar cualquier filename en
+    # la petición HTTP, por lo que nunca debemos utilizarlo
+    # directamente como ruta.
     # -----------------------------------------------------
 
-    filename = get_available_filename(
+    safe_filename = sanitize_filename(
         file.filename
     )
 
+
+    # -----------------------------------------------------
+    # 4. Determinar el nombre y ruta segura del archivo.
+    # -----------------------------------------------------
+
+    filename = get_available_filename(
+        safe_filename
+    )
+
     file_path = DOCUMENTS_DIR / filename
+
+    # -----------------------------------------------------
+    # Verificación final de la ruta antes de escribir.
+    # -----------------------------------------------------
+
+    validate_document_path(file_path)
 
     total_size = 0
 
     try:
 
         # -------------------------------------------------
-        # 4. Guardar físicamente el archivo.
+        # 5. Guardar físicamente el archivo.
         # -------------------------------------------------
 
         with file_path.open("wb") as buffer:
@@ -297,7 +409,7 @@ async def upload_document(
 
 
         # -------------------------------------------------
-        # 5. Extraer texto, generar chunks y embeddings.
+        # 6. Extraer texto, generar chunks y embeddings.
         # -------------------------------------------------
 
         chunks, embeddings = process_document(
@@ -306,7 +418,7 @@ async def upload_document(
 
 
         # -------------------------------------------------
-        # 6. Guardar documento + chunks + embeddings
+        # 7. Guardar documento + chunks + embeddings
         #    en PostgreSQL.
         # -------------------------------------------------
 
@@ -321,7 +433,7 @@ async def upload_document(
 
 
         # -------------------------------------------------
-        # 7. Guardar metadata.
+        # 8. Guardar metadata.
         #
         # Si esta operación falla, eliminamos el documento
         # de PostgreSQL y el archivo físico.
@@ -330,13 +442,16 @@ async def upload_document(
         try:
 
             metadata[filename] = {
-                "sha256": file_hash,
-                "size_bytes": total_size,
-                "content_type": file.content_type
-            }
-                             
-            save_metadata(metadata)
 
+                "sha256": file_hash,
+
+                "size_bytes": total_size,
+
+                "content_type": file.content_type
+
+            }
+
+            save_metadata(metadata)
 
         except Exception:
 
@@ -371,20 +486,28 @@ async def upload_document(
 
 
         # -------------------------------------------------
-        # 8. Devolver resultado del procesamiento.
+        # 9. Devolver resultado del procesamiento.
         # -------------------------------------------------
 
         return {
+
             "filename": filename,
+
             "content_type": file.content_type,
+
             "size_bytes": total_size,
+
             "saved": True,
+
             "document_id": document_id,
+
             "chunks_processed": len(chunks)
+
         }
 
 
     except HTTPException:
+
         raise
 
 
