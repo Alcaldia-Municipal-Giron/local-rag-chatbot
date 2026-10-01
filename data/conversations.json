@@ -211,6 +211,10 @@
         {
             "role": "user",
             "content": "¿Cómo se cambia la contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para cambiar la contraseña, sigue estos pasos:\n\n1. Inicia sesión en el sistema.\n2. Haz clic en el icono de usuario en la parte superior derecha de la pantalla.\n3. Selecciona \"Mi Perfil\".\n4. Haz clic en \"Editar perfil\".\n5. En la sección de \"Cuenta de acceso\", haz clic en \"Cambiar contraseña\".\n6. Ingresa tu nueva contraseña (mínimo 8 caracteres) y confírmala.\n7. Haz clic en \"Guardar cambios\".\n\nEstos pasos te permitirán cambiar tu contraseña en el sistema."
         }
     ],
     "string": [
