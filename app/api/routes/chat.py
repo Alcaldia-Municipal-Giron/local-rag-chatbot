@@ -44,7 +44,7 @@ def chat(request: ChatRequest):
 
     # Recupera los fragmentos más relevantes de los documentos.
     try:
-        resultados = recuperar_contexto(
+        resultados = recuperar_contexto( # Hace llamado a retriever.py
             request.message,
             top_k=3,
         )

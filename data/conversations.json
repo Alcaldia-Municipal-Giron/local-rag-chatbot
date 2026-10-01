@@ -212,5 +212,15 @@
             "role": "user",
             "content": "¿Cómo se cambia la contraseña?"
         }
+    ],
+    "string": [
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "Gaia es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio. Sustituye el formato físico CT-F.03 por un registro digital, lo que agiliza el proceso, organiza la información y facilita su consulta."
+        }
     ]
 }
