@@ -1,0 +1,478 @@
+{
+    "sesion-fifo-prueba-2": [
+        {
+            "role": "user",
+            "content": "Pregunta 1"
+        },
+        {
+            "role": "assistant",
+            "content": "Respuesta 1"
+        }
+    ],
+    "paraBorrarV2": [
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio. Sustituye el formato físico CT-F.03 por un registro digital, lo que agiliza el proceso, organiza la información y facilita su consulta."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué hace el modulo de Estadistica en GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "El módulo Estadística permite al funcionario consultar información estadística generada a partir de los registros disponibles en el sistema. La información se presenta mediante indicadores, gráficos y diferentes categorías de consulta, facilitando la visualización y análisis de los datos registrados."
+        }
+    ],
+    "sesion-1": [
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y tray"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y trayectoria y repertorio.\n   - **Info Adicional**: Permite ingresar detalles sobre la situación laboral y de seguridad social, si tiene una empresa registrada en Cámara de Comercio o RUT, y enlaces a sus redes sociales.\n   - **Cuenta de acceso**: Permite crear un usuario y contraseña para iniciar sesión en el sistema.\n\n4. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos.\n\n5. **Estado del registro**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio. Sustituye el formato físico CT-F.03 por un registro digital, lo que agiliza el proceso, organiza la información y facilita su consulta."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Formulario de registro de artistas**: El formulario se divide en cuatro secciones:\n   - **Datos personales**: Incluye campos para ingresar nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n   - **Disciplina**: Permite seleccionar una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y trayectoria y repertorio.\n   - **Info Adicional**: Permite ingresar detalles sobre la situación laboral y de seguridad social, si tiene una empresa registrada en Cámara de Comercio o RUT, y enlaces a sus redes sociales.\n   - **Cuenta de acceso**: Permite crear un usuario y contraseña para iniciar sesión en el sistema.\n\n4. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos.\n\n5. **Estado del registro**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registra un prestador turístico?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para registrar un prestador turístico, sigue estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Selección de la opción \"Aceptar y continuar\"**: Una vez aceptada la autorización, el usuario selecciona esta opción para avanzar al formulario de registro.\n\n3. **Datos del lugar**: En este apartado se solicita la información básica del sitio turístico o establecimiento, necesaria para identificarlo y facilitar su contacto. Los campos disponibles son:\n   - Nombre: permite ingresar el nombre del sitio turístico o establecimiento.\n   - Dirección: permite registrar la dirección donde se encuentra ubicado.\n   - Teléfono: permite ingresar el número de contacto.\n   - Correo electrónico: permite registrar la dirección de correo electrónico del establecimiento.\n\n4. **Cuenta de acceso**: En este apartado, el usuario debe configurar los datos necesarios para crear su cuenta de acceso, la cual permitirá ingresar posteriormente al sistema y consultar la información asociada al registro del sitio turístico.\n   - Ingresa el correo electrónico y establece una contraseña. Estos datos serán utilizados posteriormente como credenciales para iniciar sesión en la plataforma.\n   - Asegúrate de recordar el correo electrónico y la contraseña registrados, ya que serán necesarios para acceder nuevamente al sistema.\n\n5. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos.\n\n6. **Estado del registro**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué información se solicita durante el registro?"
+        },
+        {
+            "role": "assistant",
+            "content": "Durante el registro, se solicitan las siguientes informaciones:\n\n1. **Datos personales**: Nombres, apellidos, tipo y número de documento, correo, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n\n2. **Disciplina**: Selecciona una o varias modalidades artísticas y proporciona información adicional sobre el género o estilo, instrumento, grupo diferencial y trayectoria y repertorio.\n\n3. **Info Adicional**: Incluye detalles sobre la situación laboral y de seguridad social, si tiene una empresa registrada en Cámara de Comercio o RUT, y enlaces a sus redes sociales.\n\n4. **Cuenta de acceso**: Ingresa el correo electrónico y establece una contraseña. Estos datos serán utilizados posteriormente como credenciales para iniciar sesión en la plataforma.\n\n5. **Fotos del lugar**: Se solicitan hasta 10 fotos adicionales, sin contar la foto principal.\n\n6. **Cuenta de acceso**: Se crea una cuenta de acceso para el usuario y se establece una contraseña.\n\n7. **Verificación y envío del registro**: El usuario revisa cuidadosamente sus datos y luego selecciona \"Enviar registro\" para completar el proceso. Si encuentra errores, puede seleccionar \"Anterior\" para corregirlos."
+        }
+    ],
+    "sesion-avg_respuesta": [
+        {
+            "role": "user",
+            "content": "¿Cuántas fotografías puede subir un prestador turístico durante el registro?"
+        },
+        {
+            "role": "assistant",
+            "content": "Un prestador turístico puede subir hasta 6 fotografías durante el registro."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se registra un nuevo prestador de servicios turísticos?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para registrar un nuevo prestador de servicios turísticos, se debe navegar al Panel de administración y seleccionar la sección Turismo. Luego, se debe hacer clic en \"Nuevo prestador\" para iniciar el registro."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se recupera una contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para recuperar una contraseña, se debe navegar a la pantalla de inicio de sesión y seleccionar la opción \"¿Olvidaste tu contraseña?\". Luego, se debe escribir el correo electrónico asociado a la cuenta y seleccionar \"Enviar código de verificación\". Se recibirá un código de 6 dígitos por correo electrónico, válido por 15 minutos. Se debe escribir el código en el sistema y seleccionar \"Verificar código\". Luego, se debe escribir una nueva contraseña (mínimo 8 caracteres) y confirmarla, y seleccionar \"Guardar nueva contraseña\"."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué requisitos legales necesita un artista para registrarse?"
+        },
+        {
+            "role": "assistant",
+            "content": "No se especifican requisitos legales específicos para registrarse como artista."
+        }
+    ],
+    "sesion-filtro-determinista-relevancia": [
+        {
+            "role": "user",
+            "content": "¿Cuál es la capital de Colombia?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Cuántas fotografías puede subir un prestador turístico?"
+        },
+        {
+            "role": "assistant",
+            "content": "Un prestador turístico puede subir hasta 6 fotografías para complementar la información del sitio turístico."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué requisitos legales necesita un artista para registrarse?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "user",
+            "content": "¿Capital de España?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        }
+    ],
+    "prueba-Docker-encendido": [
+        {
+            "role": "user",
+            "content": "¿Que es Gaia?"
+        },
+        {
+            "role": "assistant",
+            "content": "Gaia es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un Artista?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para crear un Artista, sigue estos pasos:\n\n1. Inicia sesión en el Panel de Administración.\n2. Navega a la sección de Artistas.\n3. Haz clic en \"Nuevo artista\".\n4. Completa el formulario de registro de Artista.\n5. Acepta la autorización para el tratamiento de datos personales.\n6. Completa los campos de Datos personales, Disciplina, Info Adicional y Cuenta de acceso.\n7. Acepta la autorización para el tratamiento de datos personales.\n8. Haz clic en \"Enviar registro\".\n\nEstos pasos te permitirán registrar un nuevo artista en el sistema."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se crea un sitio turístico?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para crear un sitio turístico, sigue estos pasos:\n\n1. Inicia sesión en el Panel de Administración.\n2. Navega a la sección de Turismo.\n3. Haz clic en \"Nuevo sitio turístico\".\n4. Completa el formulario de registro de sitio turístico.\n5. Acepta la autorización para el tratamiento de datos personales.\n6. Completa los campos de Datos del lugar, Fotos del lugar y Cuenta de acceso.\n7. Acepta la autorización para el tratamiento de datos personales.\n8. Haz clic en \"Enviar registro\".\n\nEstos pasos te permitirán registrar un nuevo sitio turístico en el sistema."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se cambia la contraseña?"
+        },
+        {
+            "role": "user",
+            "content": "¿Qué hace el modulo de Estadistica en GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para cambiar la contraseña, sigue estos pasos:\n\n1. Inicia sesión en el Panel de Administración.\n2. Haz clic en \"Mi cuenta\".\n3. En la sección \"Cuenta\", haz clic en \"Cambiar contraseña\".\n4. Ingresa la nueva contraseña y confirma la misma.\n5. Haz clic en \"Guardar cambios\".\n\nEl módulo de Estadística en GAIA permite al funcionario consultar información estadística generada a partir de los registros disponibles en el sistema. La información se presenta mediante indicadores, gráficos y diferentes categorías de consulta, facilitando la visualización y análisis de los datos registrados."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué hace el modulo de Estadistica en GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "El módulo de Estadística en GAIA permite al funcionario consultar información estadística generada a partir de los registros disponibles en el sistema. La información se presenta mediante indicadores, gráficos y diferentes categorías de consulta, facilitando la visualización y análisis de los datos registrados."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué hace el modulo de Estadistica en GAIA?"
+        },
+        {
+            "role": "user",
+            "content": "¿Qué hace el modulo de Estadistica en GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "El módulo de Estadística en GAIA permite al funcionario consultar información estadística generada a partir de los registros disponibles en el sistema. La información se presenta mediante indicadores, gráficos y diferentes categorías de consulta, facilitando la visualización y análisis de los datos registrados."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué hace el modulo de Estadistica en GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "El módulo de Estadística en GAIA permite al funcionario consultar información estadística generada a partir de los registros disponibles en el sistema. La información se presenta mediante indicadores, gráficos y diferentes categorías de consulta, facilitando la visualización y análisis de los datos registrados."
+        }
+    ],
+    "prueba-system-reducido": [
+        {
+            "role": "user",
+            "content": "¿Cómo se registran los artistas?"
+        },
+        {
+            "role": "assistant",
+            "content": "Los artistas se registran siguiendo estos pasos:\n\n1. **Autorización para el tratamiento de datos personales**: El sistema presenta un mensaje de autorización donde se explican los términos del tratamiento de datos personales. El usuario debe leer y aceptar esta autorización.\n\n2. **Datos personales**: Se solicitan los datos personales del artista, incluyendo nombres, apellidos, tipo y número de documento, correo electrónico, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n\n3. **Disciplina**: Se selecciona una o varias modalidades artísticas y se proporcionan detalles adicionales según la disciplina elegida.\n\n4. **Info adicional**: Se proporciona información adicional sobre la situación laboral y de seguridad social, así como si el artista tiene una empresa y si está registrada en la Cámara de Comercio o tiene RUT.\n\n5. **Cuenta de acceso**: Se crea una cuenta de acceso con el correo electrónico proporcionado y se establece una contraseña.\n\n6. **Enviar registro**: Una vez completados todos los campos, se selecciona \"Enviar registro\" para completar el proceso de registro.\n\n7. **Revisión**: El registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise.\n\n8. **Revisar registros pendientes**: Si el artista edita su información y necesita revisión, se muestra un aviso con la cantidad de registros pendientes de revisar y se puede revisar estos registros.\n\n9. **Filtrar registros**: Los registros se pueden filtrar por nombre, identificación, número de registro, RNT, estado y actividad.\n\n10. **Crear un nuevo registro**: Se puede crear un nuevo registro de artista o prestador de servicios turísticos utilizando el botón \"Nuevo artista\" o \"Nuevo prestador\""
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se cambia la contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para cambiar la contraseña, sigue estos pasos:\n\n1. **Iniciar sesión**: Primero, inicia sesión en el sistema utilizando tu correo electrónico y contraseña.\n\n2. **Ir a la sección de perfil**: Una vez que estés logueado, selecciona \"Mi Perfil\" en el menú de navegación.\n\n3. **Acceder a la sección de cambio de contraseña**: En el menú de la izquierda, selecciona \"Cambiar contraseña\".\n\n4. **Escribir la nueva contraseña**: En el campo \"Nueva contraseña\", ingresa tu nueva contraseña. Asegúrate de que cumpla con los requisitos mínimos (mínimo de 8 caracteres).\n\n5. **Confirmar la nueva contraseña**: En el campo \"Confirmar contraseña\", vuelve a escribir la nueva contraseña para asegurarte de que estás escribiendo correctamente.\n\n6. **Guardar cambios**: Haz clic en el botón \"Guardar cambios\" para confirmar la nueva contraseña.\n\n7. **Verificar la actualización**: Una vez que hayas guardado los cambios, el sistema mostrará un mensaje de confirmación indicando que la contraseña se ha actualizado correctamente.\n\n8. **Iniciar sesión con la nueva contraseña**: Ahora puedes iniciar sesión con tu nuevo correo electrónico y contraseña.\n\nSi tienes problemas para cambiar la contraseña, puedes contactar a la Secretaría de Cultura y Turismo para obtener asistencia."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se cambia la contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para cambiar la contraseña, sigue estos pasos:\n\n1. **Iniciar sesión**: Primero, inicia sesión en el sistema utilizando tu correo electrónico y contraseña.\n\n2. **Ir a la sección de perfil**: Una vez que estés logueado, selecciona \"Mi Perfil\" en el menú de navegación.\n\n3. **Acceder a la sección de cambio de contraseña**: En el menú de la izquierda, selecciona \"Cambiar contraseña\".\n\n4. **Escribir la nueva contraseña**: En el campo \"Nueva contraseña\", ingresa tu nueva contraseña. Asegúrate de que cumpla con los requisitos mínimos (mínimo de 8 caracteres).\n\n5. **Confirmar la nueva contraseña**: En el campo \"Confirmar contraseña\", vuelve a escribir la nueva contraseña para asegurarte de que estás escribiendo correctamente.\n\n6. **Guardar cambios**: Haz clic en el botón \"Guardar cambios\" para confirmar la nueva contraseña.\n\n7. **Verificar la actualización**: Una vez que hayas guardado los cambios, el sistema mostrará un mensaje de confirmación indicando que la contraseña se ha actualizado correctamente.\n\n8. **Iniciar sesión con la nueva contraseña**: Ahora puedes iniciar sesión con tu nuevo correo electrónico y contraseña.\n\nSi tienes problemas para cambiar la contraseña, puedes contactar a la Secretaría de Cultura y Turismo para obtener asistencia."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se cambia la contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para cambiar la contraseña, sigue estos pasos:\n\n1. **Iniciar sesión**: Primero, inicia sesión en el sistema utilizando tu correo electrónico y contraseña.\n\n2. **Ir a la sección de perfil**: Una vez que estés logueado, selecciona \"Mi Perfil\" en el menú de navegación.\n\n3. **Acceder a la sección de cambio de contraseña**: En el menú de la izquierda, selecciona \"Cambiar contraseña\".\n\n4. **Escribir la nueva contraseña**: En el campo \"Nueva contraseña\", ingresa tu nueva contraseña. Asegúrate de que cumpla con los requisitos mínimos (mínimo de 8 caracteres).\n\n5. **Confirmar la nueva contraseña**: En el campo \"Confirmar contraseña\", vuelve a escribir la nueva contraseña para asegurarte de que estás escribiendo correctamente.\n\n6. **Guardar cambios**: Haz clic en el botón \"Guardar cambios\" para confirmar la nueva contraseña.\n\n7. **Verificar la actualización**: Una vez que hayas guardado los cambios, el sistema mostrará un mensaje de confirmación indicando que la contraseña se ha actualizado correctamente.\n\n8. **Iniciar sesión con la nueva contraseña**: Ahora puedes iniciar sesión con tu nuevo correo electrónico y contraseña.\n\nSi tienes problemas para cambiar la contraseña, puedes contactar a la Secretaría de Cultura y Turismo para obtener asistencia."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo se cambia la contraseña?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para cambiar la contraseña, sigue estos pasos:\n\n1. **Iniciar sesión**: Primero, inicia sesión en el sistema utilizando tu correo electrónico y contraseña.\n\n2. **Ir a la sección de perfil**: Una vez que estés logueado, selecciona \"Mi Perfil\" en el menú de navegación.\n\n3. **Acceder a la sección de cambio de contraseña**: En el menú de la izquierda, selecciona \"Cambiar contraseña\".\n\n4. **Escribir la nueva contraseña**: En el campo \"Nueva contraseña\", ingresa tu nueva contraseña. Asegúrate de que cumpla con los requisitos mínimos (mínimo de 8 caracteres).\n\n5. **Confirmar la nueva contraseña**: En el campo \"Confirmar contraseña\", vuelve a escribir la nueva contraseña para asegurarte de que estás escribiendo correctamente.\n\n6. **Guardar cambios**: Haz clic en el botón \"Guardar cambios\" para confirmar la nueva contraseña.\n\n7. **Verificar la actualización**: Una vez que hayas guardado los cambios, el sistema mostrará un mensaje de confirmación indicando que la contraseña se ha actualizado correctamente.\n\n8. **Iniciar sesión con la nueva contraseña**: Ahora puedes iniciar sesión con tu nuevo correo electrónico y contraseña.\n\nSi tienes problemas para cambiar la contraseña, puedes contactar a la Secretaría de Cultura y Turismo para obtener asistencia."
+        }
+    ],
+    "558077d6-ea77-4fed-980a-67c14faa10b6": [
+        {
+            "role": "user",
+            "content": "¿Qué hace el módulo de Estadística en GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "El módulo de Estadística en GAIA permite al funcionario consultar información estadística generada a partir de los registros disponibles en el sistema. La información se presenta mediante indicadores, gráficos y diferentes categorías de consulta, facilitando la visualización y análisis de los datos registrados."
+        },
+        {
+            "role": "user",
+            "content": "¿Cuántos módulos tiene la GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        },
+        {
+            "role": "user",
+            "content": "¿Cuál es la capital de Francia?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        }
+    ],
+    "prueba-saludo": [
+        {
+            "role": "user",
+            "content": "Hola, ¿cómo estás?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "Hola, ¿cómo estás?"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        }
+    ],
+    "588822e4-694d-4731-863f-314b6d5d1c26": [
+        {
+            "role": "user",
+            "content": "Hola, tengo una pregunta"
+        },
+        {
+            "role": "assistant",
+            "content": "Hola! ¿En qué puedo ayudarte hoy?"
+        },
+        {
+            "role": "user",
+            "content": "Perfecto, me puedes decir ¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        },
+        {
+            "role": "user",
+            "content": "Muchas gracias por tu ayuda, hasta luego"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "Muchas gracias por tu ayuda, hasta luego"
+        },
+        {
+            "role": "assistant",
+            "content": "¡Con mucho gusto! ¡Hasta luego, aquí estaré si me necesitas!"
+        },
+        {
+            "role": "user",
+            "content": "Gracias, ¿cómo me registro como artista?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para registrarte como artista, sigue estos pasos:\n\n1. Accede a la página web de la Secretaría de Cultura y Turismo.\n2. Busca la opción de \"Registrarme\" o \"Crear Cuenta\".\n3. Completa el formulario de registro con tus datos personales, incluyendo tu nombre, apellidos, tipo y número de documento, correo electrónico, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n4. Selecciona la opción \"Artista\" en el menú de registro.\n5. Completa la sección de \"Disciplina\" y selecciona las modalidades artísticas que perteneces. Si necesitas, puedes agregar más modalidades.\n6. Completa la sección de \"Info adicional\" con tu situación laboral y de seguridad social, si tienes una empresa, puedes indicar si está registrada en Cámara de Comercio o si tiene RUT. También puedes agregar enlaces a tus redes sociales o plataformas.\n7. Crea una cuenta de acceso con un correo electrónico y una contraseña de mínimo 8 caracteres.\n8. Finalmente, revisa tu información y selecciona \"Enviar registro\".\n\nRecuerda que el registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        },
+        {
+            "role": "user",
+            "content": "Te lo agradezco, hasta luego"
+        },
+        {
+            "role": "assistant",
+            "content": "¡Con mucho gusto! ¡Hasta luego, aquí estaré si me necesitas!"
+        },
+        {
+            "role": "user",
+            "content": "Te lo agradezco"
+        },
+        {
+            "role": "assistant",
+            "content": "¡Con gusto! ¿En qué más puedo ayudarte?"
+        },
+        {
+            "role": "user",
+            "content": "Me tengo que ir"
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        },
+        {
+            "role": "user",
+            "content": "Muchas gracias, ya me tengo que ir."
+        },
+        {
+            "role": "assistant",
+            "content": "No encontré información suficiente en los documentos para responder esta pregunta."
+        }
+    ],
+    "32dcd43f-2277-4ed6-be1e-5ebf3574fd9f": [
+        {
+            "role": "user",
+            "content": "Hola, ¿Cómo te va?"
+        },
+        {
+            "role": "assistant",
+            "content": "¡Hola! ¿En qué puedo ayudarte?"
+        },
+        {
+            "role": "user",
+            "content": "Muchas gracias, ya me tengo que ir."
+        },
+        {
+            "role": "assistant",
+            "content": "¡Con mucho gusto! ¡Hasta luego, aquí estaré si me necesitas!"
+        },
+        {
+            "role": "user",
+            "content": "¿Qué es GAIA?"
+        },
+        {
+            "role": "assistant",
+            "content": "GAIA es el sistema web de la Alcaldía de Girón que permite gestionar digitalmente la información de artistas locales y prestadores de servicios turísticos del municipio."
+        },
+        {
+            "role": "user",
+            "content": "¿Cómo me registro como artista?"
+        },
+        {
+            "role": "assistant",
+            "content": "Para registrarte como artista en GAIA, sigue estos pasos:\n\n1. **Accede a GAIA**: Visita el sitio web oficial de la Alcaldía de Girón.\n\n2. **Haz clic en \"Registrarme\"**: En la parte superior de la página, busca el enlace \"Registrarme\" y haz clic en él.\n\n3. **Elegir el tipo de registro**: En el formulario de registro, selecciona \"Artista\" en el campo \"Elegir el tipo de registro\".\n\n4. **Completa los datos personales**: Completa los campos de datos personales, incluyendo tu nombre, apellidos, tipo y número de documento, correo electrónico, celular, departamento, municipio, dirección, barrio o vereda, y una foto de perfil.\n\n5. **Selecciona tu disciplina**: Elige una o varias modalidades artísticas que perteneces, y si es necesario, selecciona el género o estilo y el instrumento.\n\n6. **Completa la información adicional**: Añade tu situación laboral y de seguridad social, si tienes una empresa, y los enlaces a tus redes sociales o plataformas.\n\n7. **Crea una cuenta de acceso**: Ingresa un correo electrónico y crea una contraseña de mínimo 8 caracteres.\n\n8. **Envía el registro**: Una vez completado el formulario, haz clic en \"Enviar registro\".\n\n9. **Verifica tu registro**: La Secretaría de Cultura y Turismo revisará tu registro y te confirmará si está pendiente o si ya está completado.\n\nRecuerda que el registro queda en estado \"Pendiente\" hasta que la Secretaría de Cultura y Turismo lo revise."
+        }
+    ],
+    "adce4d1c-b83f-445f-986a-d3e945dbbd56": [
+        {
+            "role": "user",
+            "content": "¿Puedo cambiar mi correo electrónico?"
+        },
+        {
+            "role": "assistant",
+            "content": "No, desde el formulario de edición no se pueden modificar. Debes contactar a la Secretaría de Cultura y Turismo."
+        },
+        {
+            "role": "user",
+            "content": "Chao, pero antes dime cómo cambio mi correo"
+        },
+        {
+            "role": "assistant",
+            "content": "Lo siento, pero no puedo ayudarte con eso."
+        }
+    ]
+}

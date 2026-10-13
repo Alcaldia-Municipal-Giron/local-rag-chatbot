@@ -12,11 +12,24 @@ def construir_contexto(resultados):
 
     for posicion, resultado in enumerate(resultados, start=1):
 
+        texto = resultado["text"]
+
+        print(
+            f"[CONTEXTO] Fragmento {posicion} | "
+            f"Caracteres: {len(texto)}"
+        )
+
         fragmento = (
             f"[Fragmento {posicion}]\n"
-            f"{resultado['text']}"
+            f"{texto}"
         )
 
         fragmentos.append(fragmento)
 
-    return "\n\n".join(fragmentos)
+    contexto = "\n\n".join(fragmentos)
+
+    print(
+        f"[CONTEXTO] Total caracteres: {len(contexto)}"
+    )
+
+    return contexto

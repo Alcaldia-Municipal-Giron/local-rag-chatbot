@@ -1,5 +1,6 @@
-
 import json
+import logging
+import time
 
 import httpx
 
@@ -8,6 +9,10 @@ import httpx
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
 OLLAMA_MODEL = "qwen2.5-coder:3b-instruct"
 OLLAMA_TIMEOUT = 500.0
+
+
+# Configuración del registro de métricas.
+logger = logging.getLogger(__name__)
 
 
 # Excepción para errores durante la generación de respuestas.
@@ -34,6 +39,15 @@ def generar_respuesta(messages):
         },
     }
 
+    # Registra el inicio de la solicitud.
+    inicio_solicitud = time.perf_counter()
+
+    # Inicializa las métricas de la generación.
+    tiempo_respuesta_http = None
+    tiempo_primer_fragmento = None
+    metricas_finales = None
+    generacion_completada = False
+
     try:
 
         # Mantiene abierta la conexión con Ollama
@@ -45,11 +59,11 @@ def generar_respuesta(messages):
             timeout=OLLAMA_TIMEOUT,
         ) as respuesta:
 
+            # Registra el tiempo hasta recibir la respuesta HTTP.
+            tiempo_respuesta_http = time.perf_counter() - inicio_solicitud
+
             # Comprueba si Ollama respondió con un error HTTP.
             respuesta.raise_for_status()
-
-            # Controla si Ollama confirmó el fin de la generación.
-            generacion_completada = False
 
             # Procesa cada fragmento enviado por Ollama.
             for linea in respuesta.iter_lines():
@@ -95,6 +109,12 @@ def generar_respuesta(messages):
 
                 if contenido:
 
+                    # Registra el tiempo hasta el primer contenido.
+                    if tiempo_primer_fragmento is None:
+                        tiempo_primer_fragmento = (
+                            time.perf_counter() - inicio_solicitud
+                        )
+
                     # Envía inmediatamente el fragmento
                     # al consumidor del generador.
                     yield contenido
@@ -103,6 +123,19 @@ def generar_respuesta(messages):
                 if datos.get("done") is True:
 
                     generacion_completada = True
+
+                    # Conserva las métricas que Ollama informa
+                    # en el último fragmento del flujo.
+                    metricas_finales = {
+                        "prompt_eval_count": datos.get("prompt_eval_count"),
+                        "prompt_eval_duration": datos.get(
+                            "prompt_eval_duration"
+                        ),
+                        "eval_count": datos.get("eval_count"),
+                        "eval_duration": datos.get("eval_duration"),
+                        "load_duration": datos.get("load_duration"),
+                        "total_duration": datos.get("total_duration"),
+                    }
 
                     break
 
@@ -129,3 +162,87 @@ def generar_respuesta(messages):
         raise OllamaServiceError(
             "No se pudo establecer o mantener la conexión con Ollama."
         ) from e
+
+    finally:
+
+        # Calcula el tiempo total transcurrido.
+        tiempo_total = time.perf_counter() - inicio_solicitud
+
+        # Convierte las duraciones de nanosegundos a segundos.
+        if metricas_finales:
+            prompt_eval_segundos = (
+                metricas_finales["prompt_eval_duration"] / 1_000_000_000
+                if metricas_finales["prompt_eval_duration"] is not None
+                else None
+            )
+
+            eval_segundos = (
+                metricas_finales["eval_duration"] / 1_000_000_000
+                if metricas_finales["eval_duration"] is not None
+                else None
+            )
+
+            # Calcula la velocidad de generación en tokens por segundo.
+            tokens_por_segundo = (
+                metricas_finales["eval_count"] / eval_segundos
+                if (
+                    metricas_finales["eval_count"] is not None
+                    and eval_segundos is not None
+                    and eval_segundos > 0
+                )
+                else None
+            )
+
+            logger.info(
+                "[OLLAMA] HTTP: %.2fs | Primer fragmento: %s | "
+                "Total: %.2fs | Prompt: %s tokens en %s s | "
+                "Generación: %s tokens en %s s | Velocidad: %s tok/s | "
+                "Carga modelo: %s s | Total Ollama: %s s",
+                tiempo_respuesta_http
+                if tiempo_respuesta_http is not None
+                else -1,
+                (
+                    f"{tiempo_primer_fragmento:.2f}s"
+                    if tiempo_primer_fragmento is not None
+                    else "Sin contenido"
+                ),
+                tiempo_total,
+                metricas_finales["prompt_eval_count"],
+                f"{prompt_eval_segundos:.2f}"
+                if prompt_eval_segundos is not None
+                else "N/D",
+                metricas_finales["eval_count"],
+                f"{eval_segundos:.2f}"
+                if eval_segundos is not None
+                else "N/D",
+                f"{tokens_por_segundo:.2f}"
+                if tokens_por_segundo is not None
+                else "N/D",
+                (
+                    f"{metricas_finales['load_duration'] / 1_000_000_000:.2f}"
+                    if metricas_finales["load_duration"] is not None
+                    else "N/D"
+                ),
+                (
+                    f"{metricas_finales['total_duration'] / 1_000_000_000:.2f}"
+                    if metricas_finales["total_duration"] is not None
+                    else "N/D"
+                ),
+            )
+
+        else:
+            logger.warning(
+                "[OLLAMA] Generación incompleta o sin métricas finales. "
+                "HTTP: %s | Primer fragmento: %s | Tiempo transcurrido: %.2fs",
+                (
+                    f"{tiempo_respuesta_http:.2f}s"
+                    if tiempo_respuesta_http is not None
+                    else "Sin respuesta"
+                ),
+                (
+                    f"{tiempo_primer_fragmento:.2f}s"
+                    if tiempo_primer_fragmento is not None
+                    else "Sin contenido"
+                ),
+                tiempo_total,
+            )
